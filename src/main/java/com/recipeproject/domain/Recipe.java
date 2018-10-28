@@ -3,6 +3,7 @@ package com.recipeproject.domain;
 import com.recipeproject.enums.Difficulty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,11 +19,13 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+
+    @Lob
     private String directions;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingridient> ingridients;
+    private Set<Ingridient> ingridients = new HashSet<>();
 
 
     @Lob
@@ -39,7 +42,18 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
              joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
+
+
+    public Recipe addIngridient(Ingridient ingridient){
+        ingridient.setRecipe(this);
+        this.getIngridients().add(ingridient);
+        return this;
+    }
+
+    public void addCategory(Category category){
+        this.getCategories().add(category);
+    }
 
     public long getId() {
         return id;
@@ -119,6 +133,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Set<Ingridient> getIngridients() {
