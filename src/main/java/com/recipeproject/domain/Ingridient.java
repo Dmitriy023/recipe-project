@@ -1,13 +1,15 @@
 package com.recipeproject.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingridient {
 
@@ -37,7 +39,7 @@ public class Ingridient {
     @ManyToOne
     private Recipe recipe;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private UnitOfMeasure uom;
 
 }

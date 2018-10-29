@@ -5,9 +5,11 @@ import com.recipeproject.enums.Difficulty;
 import com.recipeproject.repositories.CategoryRepository;
 import com.recipeproject.repositories.RecipeRepository;
 import com.recipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,10 +17,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent>{
+
+
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecepies());
+        log.info("Loaded Bootstrap Data");
+
     }
 
     private CategoryRepository categoryRepository;
@@ -112,8 +120,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.addIngridient(new Ingridient("OliveOil",new BigDecimal(1),tableSpoon));
         guacRecipe.addIngridient(new Ingridient("Lime cut",new BigDecimal(3),each));
 
-        guacRecipe.getCategories().add(americanCategory);
-        guacRecipe.getCategories().add(mexicanCategory);
+        guacRecipe.addCategory(americanCategory);
+        guacRecipe.addCategory(mexicanCategory);
 
         recipes.add(guacRecipe);
 
