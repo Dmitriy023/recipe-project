@@ -1,22 +1,56 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Recipe HomePage</title>
+    <link rel="stylesheet" href="styles/css/bootstrap.css"/>
+    <script src="styles/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../static/styles/css/bootstrap.css">
+    <script src="../static/styles/js/bootstrap.bundle.js"></script>
+
+
 </head>
 <body>
-<h1>Wellcome to ....222</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Difficulty</th>
-    </tr>
-    <tr th:each="recipe: ${recipies}">
-        <th th:text="${recipe.id}"></th>
-        <th th:text="${recipe.description}"></th>
-        <th th:text="${recipe.difficulty}"></th>
-    </tr>
-</table>
+
+<div class="container-fluid" style="margin-top: 50px">
+
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card ">
+
+                <div class="card-header bg-primary text-white">
+                    <h1 class="test">Wellcome to ....</h1>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipies)}">
+                        <table class="table table-hover">
+                            <thread class="thread-inverse">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Description</th>
+                                    <th>Difficulty</th>
+                                </tr>
+                            </thread>
+                            <tr th:each="recipe: ${recipies}">
+                                <th th:text="${recipe.id}"></th>
+                                <th th:text="${recipe.description}"></th>
+                                <th th:text="${recipe.difficulty}"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn-primary" style="margin-top: 10px; float:right">NEXT</button>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
+
+
