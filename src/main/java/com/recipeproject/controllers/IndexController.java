@@ -1,4 +1,4 @@
-package com.recipeproject.Controllers;
+package com.recipeproject.controllers;
 
 
 import com.recipeproject.services.RecipeService;
