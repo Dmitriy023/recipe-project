@@ -20,7 +20,7 @@ private RecipeService recipeService;
     @RequestMapping({"","/","/index"})
     public String getIndexPage(Model model){
 
-        model.addAttribute("recipies",recipeService.getRecepies());
+        model.addAttribute("recipes",recipeService.getRecepies());
         log.debug("Getting Index Page");
         return "index";
     }
