@@ -6,10 +6,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import static org.mockito.Mockito.*;
+
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -27,8 +30,26 @@ public class RecipeServiceImplTest {
         recipeService = new RecipeServiceImpl(recipeRepository);
 
     }
+
     @Test
-    public void getRecepies() {
+    public void getRecepiByIdTest(){
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(Mockito.anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        Assert.assertNotNull("No Recipes Returned",recipeReturned);
+        Assert.assertEquals(1l,recipeReturned.getId());
+        Mockito.verify(recipeRepository,Mockito.times(1)).findById(anyLong());
+        verify(recipeRepository,never()).findAll();
+    }
+
+    @Test
+    public void getRecepiesTest() {
         Recipe recipe = new Recipe();
         Set<Recipe> recipesData = new HashSet<>();
         recipesData.add(recipe);

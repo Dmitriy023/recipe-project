@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Recipe</title>
+
+    <link rel="stylesheet" href="../../styles/css/bootstrap.css"/>
+    <script src="../../styles/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../../static/styles/css/bootstrap.css" crossorigin="anonymous" ,
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+    <script src="../../static/styles/js/bootstrap.bundle.js"
+            th:href="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+    <style>
+        .pad {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<!--/*@thymesVar id="recipe" type="com.recipeproject.domain.Recipe"*/-->
+<div class="container-fluid pad">
+
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card border-primary">
+                <div class="card-header  bg-primary text-white">
+                    <h1 class="card-title " th:text="${recipe.description}">Recipe Description</h1>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Categories:</h5>
+                        </div>
+                        <div class="col-md-9">
+                            <ul>
+                                <li th:remove="all">One</li>
+                                <li th:remove="all">Two</li>
+                                <li th:each="category:${recipe.categories}" th:text="${category.description}">Three</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <h5>Prep Time:</h5>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p th:text="${recipe.prepTime}">30 min</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h5>Difficulty</h5>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p th:text="${recipe.difficulty}">Easy</p>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <h5>Cooktime</h5>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p th:text="${recipe.cookTime}">30</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h5>Servings</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.servings}">4</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Source</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.source}">30 min</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>URL</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <p th:text="${recipe.url}">example.com</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card pad border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="card-title">Ingridients</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li th:remove="all">1 Cup of milk</li>
+                                <li th:remove="all">1 Teaspoon of chocolate</li>
+                                <li th:each="ingridient:${recipe.ingridients}"
+                                    th:text="${ingridient.amount} +' '+ ${ingridient.uom.description} + ' ' + ${ingridient.description}">1 Teaspoon of sugar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card pad border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="card-title">Directions</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet aut consequatur
+                                culpa delectus dicta dignissimos distinctio eaque error est facere harum, libero modi
+                                mollitia nemo obcaecati officiis perferendis perspiciatis praesentium quidem quod rem
+                                rerum sed similique tempora temporibus tenetur ullam vel voluptas voluptatum? Incidunt
+                                modi natus nihil odio officiis quasi quisquam veritatis vero. Accusantium animi at
+                                cumque debitis dolorem dolores esse eum, explicabo illo incidunt inventore laborum
+                                magnam nesciunt nisi non optio praesentium quaerat, qui quis ratione rem repellat saepe
+                                sed sit unde veniam voluptates. Aperiam corporis cumque hic, labore maiores odio
+                                repellendus voluptatem? Commodi deserunt dolores ipsum perspiciatis! Ad aliquam, amet
+                                asperiores at corporis cum deserunt dolore dolorem explicabo fugit harum illo impedit
+                                iste labore libero magni minus mollitia natus neque nisi numquam omnis pariatur
+                                perspiciatis placeat quaerat quas quasi qui quidem repellat repellendus reprehenderit
+                                repudiandae sequi sit tempora velit, vitae voluptas! Ab aperiam assumenda delectus
+                                facere illo neque pariatur perferendis provident, quas, quisquam quod rem? Accusamus
+                                alias consectetur, dolorem eius enim eveniet facilis impedit odio officia optio porro
+                                quia sed tenetur! Consequatur debitis incidunt ipsum qui sapiente. Consequatur facilis
+                                laboriosam molestiae quasi sunt totam vero. Delectus eligendi ex illum incidunt libero
+                                modi nostrum placeat quisquam ut veritatis!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card pad border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="card-title">Notes</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad, alias, aliquid architecto
+                                asperiores at, autem deserunt dolor earum ex facere harum iste iure minus mollitia odit
+                                officia praesentium quae quasi qui quidem rem sapiente sequi suscipit tempora vel
+                                voluptatem! Commodi cum earum nulla quasi repellendus saepe veritatis! Amet, facilis
+                                molestias? Amet corporis cum doloremque eius fugit inventore iste iusto molestias nulla
+                                ratione? Asperiores consequatur culpa doloremque enim expedita facilis laudantium non
+                                sit? Beatae doloribus, eos error fuga, illo incidunt magni mollitia, nobis obcaecati
+                                odio porro quo quos ratione sapiente ut. A corporis delectus illo neque obcaecati quia
+                                rem ut! Adipisci eius enim laboriosam maxime recusandae! Consequatur debitis deserunt
+                                dicta, earum eum excepturi inventore laudantium, quibusdam recusandae similique sint
+                                tempore totam velit. Ab blanditiis culpa dignissimos dolor ea error et excepturi,
+                                exercitationem explicabo facilis fugiat harum ipsa labore laborum laudantium maiores
+                                molestiae natus nemo nulla officiis omnis perferendis quibusdam quo quod quos sunt
+                                veritatis vero vitae voluptas voluptates. Consectetur dicta expedita explicabo facere
+                                impedit minus molestias nobis quae quaerat repellendus reprehenderit sit suscipit
+                                tempore, vero, voluptatem. Expedita facilis, officiis! Architecto aspernatur, assumenda
+                                deleniti eligendi fugiat incidunt iure labore, natus, nisi perspiciatis ullam unde
+                                veniam voluptas. Ab dolorum ea laboriosam tenetur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
