@@ -85,9 +85,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Recipe guacRecipe = new Recipe();
         guacRecipe.setDescription("Pefect Guacomole");
-        guacRecipe.setCookTime(0);
+        guacRecipe.setCookTime(15);
         guacRecipe.setPrepTime(10);
         guacRecipe.setDifficulty(Difficulty.EASY);
+        guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setSource("Simply Recipes");
         guacRecipe.setDirections(
                 "1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. (See How to Cut and Peel an Avocado.) Place in a bowl." +
                         "\n" +
@@ -131,6 +133,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         chickenTacos.setDifficulty(Difficulty.MODERATE);
         chickenTacos.setPrepTime(15);
         chickenTacos.setCookTime(20);
+        guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setSource("Simply Recipes");
         chickenTacos.setDirections("1 Prepare a gas or charcoal grill for medium-high, direct heat." +
                 "\n" +
                 "2 Make the marinade and coat the chicken: In a large bowl, stir together the chili powder, oregano, cumin, sugar, salt, garlic and orange zest. Stir in the orange juice and olive oil to make a loose paste. Add the chicken to the bowl and toss to coat all over." +
