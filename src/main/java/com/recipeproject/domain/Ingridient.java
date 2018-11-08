@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+
 public class Ingridient {
 
     @Id

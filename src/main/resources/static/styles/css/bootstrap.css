@@ -41,6 +41,14 @@
   box-sizing: border-box;
 }
 
+
+.mr-Top20 {
+  margin-top: 20px;
+}
+.pd-Left15{
+  padding-left: 15px;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

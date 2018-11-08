@@ -11,7 +11,7 @@ import lombok.Setter;
 public class NotesCommand {
 
     private Long id;
-    private Recipe recipe;
+    private RecipeCommand recipe;
     private String recipeNotes;
 
 }
