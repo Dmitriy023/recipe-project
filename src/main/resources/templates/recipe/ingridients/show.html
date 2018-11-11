@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingridients</title>
+
+    <link rel="stylesheet" href="/styles/css/bootstrap.css"/>
+    <script src="/styles/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../../../static/styles/css/bootstrap.css" crossorigin="anonymous" ,
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+    <script src="../../../static/styles/js/bootstrap.bundle.js"
+            th:href="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+</head>
+<body>
+<!--/*@thymesVar id="ingridient" type="com.recipeproject.commands.IngridientCommand"*/-->
+<div class="container-fluid mr-Top20">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <div class="card-title bg-primary text-white">
+                    <h1 class="pd-Left15" th:text="'Ingridient: ' + ${ingridient.description}">ttftftf</h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover text-center">
+                            <thead>
+                            <tr>
+                                <th width="50%">ID</th>
+                                <th>DESCRIPTION</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td th:text="${ingridient.id}">1</td>
+                                <td th:text="${ingridient.description}">Desc</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

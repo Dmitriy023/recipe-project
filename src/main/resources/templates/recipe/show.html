@@ -16,7 +16,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="com.recipeproject.domain.Recipe"*/-->
-<div class="container-fluid mr-Top20">
+<div class="container-fluid mr-Top20 ">
 
     <div class="row">
         <div class="col-md-6 offset-3">
@@ -88,7 +88,8 @@
                             <h5>URL:</h5>
                         </div>
                         <div class="col-md-3">
-                            <a th:href="${recipe.url}" th:text="${recipe.description}" target="_blank"></a>
+
+                            <a th:href="${recipe.url}" target="_blank" th:text="${recipe.description}"></a>
                         </div>
                     </div>
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingridients</title>
+
+    <link rel="stylesheet" href="/styles/css/bootstrap.css"/>
+    <script src="/styles/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../../../static/styles/css/bootstrap.css" crossorigin="anonymous" ,
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+    <script src="../../../static/styles/js/bootstrap.bundle.js"
+            th:href="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+</head>
+<body>
+<!--/*@thymesVar id="recipe" type="com.recipeproject.domain.Recipe"*/-->
+<!--/*@thymesVar id="ingridients" type="com.recipeproject.commands.IngridientCommand"*/-->
+<div class="container-fluid">
+    <div class="row mr-Top20">
+        <div class="col-md-6 offset-3">
+            <div class="card mr-Top20">
+                <div class="card-title bg-primary border-primary text-white">
+                    <h1 class="pd-Left15">Ingridients</h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingridients)}">
+                        <table class="table table-hover">
+                            <thead class="thread-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>View</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tr th:each="ingridient:${recipe.ingridients}">
+                                <td th:text="${ingridient.id}"></td>
+                                <td th:text="${ingridient.amount} + ' '+${ingridient.uom.description} + ' - ' + ${ingridient.description}">Description</td>
+                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridients/' + ${ingridient.id}+ '/show'}">View</a> </td>
+                                <td><a href="#">Update</a> </td>
+                                <td><a href="#">Delete</a> </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
