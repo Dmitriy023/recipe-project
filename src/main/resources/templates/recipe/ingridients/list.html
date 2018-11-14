@@ -13,12 +13,12 @@
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="com.recipeproject.domain.Recipe"*/-->
-<!--/*@thymesVar id="ingridients" type="com.recipeproject.commands.IngridientCommand"*/-->
-<div class="container-fluid">
+<!--/*@thymesVar id="ingridient" type="com.recipeproject.commands.IngridientCommand"*/-->
+<div class="container-fluid ">
     <div class="row mr-Top20">
         <div class="col-md-6 offset-3">
-            <div class="card mr-Top20">
-                <div class="card-title bg-primary border-primary text-white">
+            <div class="card mr-Top20  border-primary">
+                <div class="card-title bg-primary text-white">
                     <h1 class="pd-Left15">Ingridients</h1>
                 </div>
                 <div class="card-body">
@@ -36,17 +36,19 @@
                             <tr th:each="ingridient:${recipe.ingridients}">
                                 <td th:text="${ingridient.id}"></td>
                                 <td th:text="${ingridient.amount} + ' '+${ingridient.uom.description} + ' - ' + ${ingridient.description}">Description</td>
-                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridients/' + ${ingridient.id}+ '/show'}">View</a> </td>
-                                <td><a href="#">Update</a> </td>
-                                <td><a href="#">Delete</a> </td>
+                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/show'}">View</a> </td>
+                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/update'}">Update</a> </td>
+                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/delete'}">Delete</a> </td>
 
                             </tr>
                         </table>
                     </div>
-                </div>
+                </div>   <a class="btn btn-primary text-white" th:href="@{'/recipe/'+${recipe.id}+'/ingridient/new'}">Add New</a>
             </div>
         </div>
+
     </div>
+
 </div>
 </body>
 </html>

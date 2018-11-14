@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingridients</title>
+
+    <link rel="stylesheet" href="/styles/css/bootstrap.css"/>
+    <script src="/styles/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../../../static/styles/css/bootstrap.css" crossorigin="anonymous" ,
+          th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+    <script src="../../../static/styles/js/bootstrap.bundle.js"
+            th:href="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+</head>
+<body>
+<!--/*@thymesVar id="ingridient" type="com.recipeproject.commands.IngridientCommand"*/-->
+<div class="container-fluid mr-Top20 border-primary">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <form th:object="${ingridient}" th:action="@{'/recipe/' + ${ingridient.recipeId} + '/ingridient'}">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="card-group">
+                    <div class="card border-primary ">
+                        <div class="card-title bg-primary text-white">
+                            <h1 class="pd-Left15"> Edit Ingridient Information</h1>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label for="desc-name" class="font-weight-bold">Description</label>
+                                    <input type="text" id="desc-name" class="form-control" th:field="*{description}"/>
+                                </div>
+
+                                <div class="col-md-4 form-group">
+                                    <label for="desc-am" class="font-weight-bold">Amount</label>
+                                    <input type="text" id="desc-am" class="form-control" th:field="*{amount}"/>
+                                </div>
+
+                                <div class="col-md-4 form-group">
+                                    <label for="sl" class="font-weight-bold">UOM</label>
+                                    <select class="form-control" name="uom.id" id="sl">
+                                        <option th:each="uomE:${uomList}"
+                                                th:value="${uomE.id}"
+                                                th:selected="${uomE.id.equals(ingridient.uom.id)}"
+                                                th:text="${uomE.description}">Each
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary text-white" name="Submit"/>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

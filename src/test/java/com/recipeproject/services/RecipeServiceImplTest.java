@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+
 import static org.mockito.Mockito.*;
 
 import org.mockito.Mockito;
@@ -33,14 +34,14 @@ public class RecipeServiceImplTest {
     RecipeCommandToRecipe recipeCommandToRecipe;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository,recipeCommandToRecipe,recipeToRecipeCommand);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
 
     }
 
     @Test
-    public void getRecepiByIdTest(){
+    public void getRecepiByIdTest() {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
@@ -50,10 +51,10 @@ public class RecipeServiceImplTest {
 
         Recipe recipeReturned = recipeService.findById(1L);
 
-        Assert.assertNotNull("No Recipes Returned",recipeReturned);
-        Assert.assertEquals(1l,recipeReturned.getId());
-        Mockito.verify(recipeRepository,Mockito.times(1)).findById(anyLong());
-        verify(recipeRepository,never()).findAll();
+        Assert.assertNotNull("No Recipes Returned", recipeReturned);
+        Assert.assertEquals(1l, recipeReturned.getId());
+        Mockito.verify(recipeRepository, Mockito.times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 
     @Test
@@ -65,7 +66,21 @@ public class RecipeServiceImplTest {
         Mockito.when(recipeService.getRecepies()).thenReturn(recipesData);
 
         Set<Recipe> recipeSet = recipeService.getRecepies();
-        Assert.assertEquals(recipeSet.size(),1);
-        Mockito.verify(recipeRepository,Mockito.times(1));
+        Assert.assertEquals(recipeSet.size(), 1);
+        Mockito.verify(recipeRepository, Mockito.times(1)).findAll();
     }
+
+    @Test
+    public void saveRecipeCommand() {
+    }
+
+    @Test
+    public void deleteRecipeById() {
+
+        Long IdToDelete = Long.valueOf(2L);
+        recipeService.deleteRecipeById(IdToDelete);
+
+        verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
+
 }

@@ -146,6 +146,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 form-group">
+                                <input type="hidden" th:field="*{notes.id}">
+                                <input type="hidden" th:field="*{notes.recipeId}">
                                 <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
                             </div>
                         </div>

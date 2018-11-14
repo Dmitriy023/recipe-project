@@ -33,7 +33,7 @@ public class IngridientToIngridientCommand implements Converter<Ingridient, Ingr
         ingridientCmd.setDescription(source.getDescription());
         ingridientCmd.setId(source.getId());
         ingridientCmd.setUom(unitConverter.convert(source.getUom()));
-       // ingridientCmd.setRecipe(recipeConverter.convert(source.getRecipe()));
+        ingridientCmd.setRecipeId(source.getRecipe().getId());
 
         return ingridientCmd;
 

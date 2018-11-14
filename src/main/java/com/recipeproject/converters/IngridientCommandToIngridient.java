@@ -3,22 +3,25 @@ package com.recipeproject.converters;
 import com.recipeproject.commands.IngridientCommand;
 import com.recipeproject.commands.RecipeCommand;
 import com.recipeproject.domain.Ingridient;
+import com.recipeproject.domain.Recipe;
+import com.recipeproject.repositories.RecipeRepository;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class IngridientCommandToIngridient  implements Converter<IngridientCommand,Ingridient>{
 
     private UnitOfMeasureCommandToUnitOfMeasure unitConverter;
-    //private RecipeCommandToRecipe recipeConverter;
+    private RecipeRepository recipeRepository;
 
 
-    public IngridientCommandToIngridient(UnitOfMeasureCommandToUnitOfMeasure unitConverter) {
+    public IngridientCommandToIngridient(UnitOfMeasureCommandToUnitOfMeasure unitConverter, RecipeRepository recipeRepository) {
         this.unitConverter = unitConverter;
-       // this.recipeConverter = recipeConverter;
-
+        this.recipeRepository = recipeRepository;
     }
 
     @Synchronized
@@ -35,7 +38,12 @@ public class IngridientCommandToIngridient  implements Converter<IngridientComma
         ingridient.setDescription(source.getDescription());
         ingridient.setId(source.getId());
         ingridient.setUom(unitConverter.convert(source.getUom()));
-      //  ingridient.setRecipe(recipeConverter.convert(source.getRecipe()));
+
+        Optional<Recipe> recipe = recipeRepository.findById(source.getRecipeId());
+        if(recipe.isPresent()){
+            ingridient.setRecipe(recipe.get());
+        }
+
 
         return ingridient;
     }

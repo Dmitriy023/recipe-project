@@ -16,7 +16,7 @@ public class IngridientCommand {
     private Long id;
     private String description;
     private BigDecimal amount;
-    private RecipeCommand recipe;
+    private Long recipeId;
     private UnitOfMeasureCommand uom;
 
 }
