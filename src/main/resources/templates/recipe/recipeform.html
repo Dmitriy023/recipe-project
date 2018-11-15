@@ -66,10 +66,12 @@
 
                             <div class="col-md-3 form-group ">
                                 <h5>Difficulty:</h5>
-                                <select class="form-control">
-                                    <option>Easy</option>
-                                    <option>Medium</option>
-                                    <option>Hard</option>
+                                <select class="form-control" th:field="*{difficulty}">
+                                    <option th:remove="all">Easy</option>
+                                    <option th:remove="all">Medium</option>
+                                    <option th:each="diffValue:${T(com.recipeproject.enums.Difficulty).values()}"
+                                    th:value="${diffValue.name()}"
+                                    th:text="${diffValue.name()}">Hard</option>
                                 </select>
                             </div>
                         </div>
@@ -153,7 +155,8 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary mr-Top20" value="Save"/>
+                <input type="submit" class="btn btn-primary mr-Top20 float-right" value="Save"/>
+                <a class="btn btn-link  mr-Top20" th:href="@{'/'}">BACK</a>
             </form>
         </div>
     </div>

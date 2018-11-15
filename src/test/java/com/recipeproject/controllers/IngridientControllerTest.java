@@ -2,14 +2,17 @@ package com.recipeproject.controllers;
 
 import com.recipeproject.commands.IngridientCommand;
 import com.recipeproject.commands.RecipeCommand;
+import com.recipeproject.domain.Recipe;
 import com.recipeproject.services.IngridientService;
 import com.recipeproject.services.RecipeService;
 import com.recipeproject.services.UomService;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -106,10 +109,31 @@ public class IngridientControllerTest {
     }
 
     @Test
-    public void saveOrUpdateIngridient() {
+    public void saveOrUpdateIngridient() throws Exception {
+
+        IngridientCommand ingridientCommand = new IngridientCommand();
+        ingridientCommand.setId(3L);
+        ingridientCommand.setRecipeId(2L);
+
+        Mockito.when(ingridientService.saveIngridientCommand(Mockito.any(IngridientCommand.class))).thenReturn(ingridientCommand);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/recipe/2/ingridient")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("id", "2")
+                .param("description", "desc")
+        ).andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/recipe/2/ingridient/3/show"));
     }
 
     @Test
-    public void deleteIngridient() {
+    public void deleteIngridient() throws Exception{
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/recipe/3/ingridient/2/delete")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("id", "1")
+                .param("decription", "desc")
+        )
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/recipe/3/ingridients/"));
     }
 }

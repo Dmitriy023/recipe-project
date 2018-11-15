@@ -22,7 +22,15 @@
         <div class="col-md-6 offset-3">
             <div class="card border-primary">
                 <div class="card-title bg-primary text-white">
-                    <h1 class="pd-Left15"th:text="${recipe.description}">Recipe Description</h1>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h1 class="pd-Left15"th:text="${recipe.description}">Recipe Description</h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-primary" th:href="@{'/recipe/'+${recipe.id}+'/image'}">Change Image</a>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="card-body">
@@ -30,13 +38,18 @@
                         <div class="col-md-3">
                             <h5>Categories:</h5>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-3">
                             <ul>
                                 <li th:remove="all">One</li>
                                 <li th:remove="all">Two</li>
                                 <li th:each="category:${recipe.categories}" th:text="${category.description}">Three</li>
 
                             </ul>
+                        </div>
+                        <div class="col-md-6">
+
+                            <img src="../../styles/images/guacamole-horiz-a-1600.jpg" height="200"
+                                 width="200"/>
                         </div>
                     </div>
                     <div class="row">
@@ -157,8 +170,11 @@
                     </div>
                 </div>
             </div>
+            <a class="btn btn-link mr-Top20" th:href="@{'/'}">BACK</a>
         </div>
+
     </div>
+
 </div>
 
 </body>

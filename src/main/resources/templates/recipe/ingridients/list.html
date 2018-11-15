@@ -37,14 +37,16 @@
                                 <td th:text="${ingridient.id}"></td>
                                 <td th:text="${ingridient.amount} + ' '+${ingridient.uom.description} + ' - ' + ${ingridient.description}">Description</td>
                                 <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/show'}">View</a> </td>
-                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/update'}">Update</a> </td>
+                                <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/'}">Update</a> </td>
                                 <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingridient/' + ${ingridient.id}+ '/delete'}">Delete</a> </td>
 
                             </tr>
                         </table>
                     </div>
-                </div>   <a class="btn btn-primary text-white" th:href="@{'/recipe/'+${recipe.id}+'/ingridient/new'}">Add New</a>
+                </div>
+                <a class="btn btn-primary text-white" th:href="@{'/recipe/'+${recipe.id}+'/ingridient/new'}">Add New</a>
             </div>
+            <a class="btb btn-link text-center" th:href="@{'/recipe/'+${recipe.id}+'/update'}">Back</a>
         </div>
 
     </div>
