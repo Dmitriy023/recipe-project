@@ -3,6 +3,7 @@ package com.recipeproject.services;
 import com.recipeproject.converters.RecipeCommandToRecipe;
 import com.recipeproject.converters.RecipeToRecipeCommand;
 import com.recipeproject.domain.Recipe;
+import com.recipeproject.exceptions.NotFoundException;
 import com.recipeproject.repositories.RecipeRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import static org.mockito.Mockito.*;
 
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -55,6 +57,15 @@ public class RecipeServiceImplTest {
         Assert.assertEquals(1l, recipeReturned.getId());
         Mockito.verify(recipeRepository, Mockito.times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void recipeNotFoundTest() {
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(Mockito.anyLong())).thenReturn(recipeOptional);
+
+        Recipe rTest = recipeService.findById(1L);
     }
 
     @Test
