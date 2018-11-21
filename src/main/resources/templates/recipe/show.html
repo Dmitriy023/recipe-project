@@ -48,8 +48,9 @@
                         </div>
                         <div class="col-md-6">
 
-                            <img src="../../styles/images/guacamole-horiz-a-1600.jpg" height="200"
+                            <img  th:src="@{'/recipe/'+${recipe.id}+'/recipeimage'}" height="200"
                                  width="200"/>
+                            <a class="btn btn-primary text-white" th:href="@{'/recipe/'+${recipe.id}+'/recipeimage'}">Press</a>
                         </div>
                     </div>
                     <div class="row">
