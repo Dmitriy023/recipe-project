@@ -18,14 +18,14 @@ import java.util.Optional;
 
 @Component
 @Slf4j
-public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent>{
+public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecepies());
-        log.info("Loaded Bootstrap Data");
+        log.info("Loading Bootstrap Data");
 
     }
 
@@ -116,11 +116,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacNotes.setRecipe(guacRecipe);
         guacRecipe.setNotes(guacNotes);
 
-        guacRecipe.addIngridient(new Ingridient("Ripe Avacado",new BigDecimal(2),each));
-        guacRecipe.addIngridient(new Ingridient("Salt",new BigDecimal(3),teaSpoon));
-        guacRecipe.addIngridient(new Ingridient("Sugar",new BigDecimal(1),teaSpoon));
-        guacRecipe.addIngridient(new Ingridient("OliveOil",new BigDecimal(1),tableSpoon));
-        guacRecipe.addIngridient(new Ingridient("Lime cut",new BigDecimal(3),each));
+        guacRecipe.addIngridient(new Ingridient("Ripe Avacado", new BigDecimal(2), each));
+        guacRecipe.addIngridient(new Ingridient("Salt", new BigDecimal(3), teaSpoon));
+        guacRecipe.addIngridient(new Ingridient("Sugar", new BigDecimal(1), teaSpoon));
+        guacRecipe.addIngridient(new Ingridient("OliveOil", new BigDecimal(1), tableSpoon));
+        guacRecipe.addIngridient(new Ingridient("Lime cut", new BigDecimal(3), each));
 
         guacRecipe.addCategory(americanCategory);
         guacRecipe.addCategory(mexicanCategory);
@@ -159,11 +159,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         chickenTacos.setNotes(chickenTacosNote);
 
-        chickenTacos.addIngridient(new Ingridient("Ancho chili powder",new BigDecimal(2),tableSpoon));
-        chickenTacos.addIngridient(new Ingridient("Dried oregano",new BigDecimal(1),teaSpoon));
-        chickenTacos.addIngridient(new Ingridient("Dried cumin",new BigDecimal(1),teaSpoon));
-        chickenTacos.addIngridient(new Ingridient("Sugar",new BigDecimal(1),teaSpoon));
-        chickenTacos.addIngridient(new Ingridient("Boneless chicken thighs",new BigDecimal(0.25),teaSpoon));
+        chickenTacos.addIngridient(new Ingridient("Ancho chili powder", new BigDecimal(2), tableSpoon));
+        chickenTacos.addIngridient(new Ingridient("Dried oregano", new BigDecimal(1), teaSpoon));
+        chickenTacos.addIngridient(new Ingridient("Dried cumin", new BigDecimal(1), teaSpoon));
+        chickenTacos.addIngridient(new Ingridient("Sugar", new BigDecimal(1), teaSpoon));
+        chickenTacos.addIngridient(new Ingridient("Boneless chicken thighs", new BigDecimal(0.25), teaSpoon));
 
         chickenTacos.addCategory(americanCategory);
         chickenTacos.addCategory(mexicanCategory);
