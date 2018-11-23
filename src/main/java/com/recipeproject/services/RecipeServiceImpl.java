@@ -32,7 +32,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Set<Recipe> getRecepies() {
         Set<Recipe> recipesSet = new HashSet<>();
 
-        recipeRepository.findAll().iterator().forEachRemaining(recipesSet::add);
+        recipeRepository.findAllByOrderByIdAsc().iterator().forEachRemaining(recipesSet::add);
 
         return recipesSet;
     }

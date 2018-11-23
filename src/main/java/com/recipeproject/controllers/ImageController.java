@@ -47,6 +47,7 @@ public class ImageController {
     @GetMapping("recipe/{id}/recipeimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws Exception {
         RecipeCommand command = recipeService.findByIdRecipeCommand(Long.valueOf(id));
+        if(command.getImage()==null) return;
         byte[] img = new byte[command.getImage().length];
         int i = 0;
         for (Byte b : command.getImage()) {
