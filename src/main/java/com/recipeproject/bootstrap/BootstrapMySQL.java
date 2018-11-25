@@ -46,15 +46,15 @@ public class BootstrapMySQL implements ApplicationListener<ContextRefreshedEvent
         categoryRepository.save(cat1);
 
         Category cat2 = new Category();
-        cat1.setDescription("Italian");
+        cat2.setDescription("Italian");
         categoryRepository.save(cat2);
 
         Category cat3 = new Category();
-        cat1.setDescription("Mexican");
+        cat3.setDescription("Mexican");
         categoryRepository.save(cat3);
 
         Category cat4 = new Category();
-        cat1.setDescription("Fast Food");
+        cat4.setDescription("Fast Food");
         categoryRepository.save(cat4);
 
     }
@@ -67,32 +67,32 @@ public class BootstrapMySQL implements ApplicationListener<ContextRefreshedEvent
 
 
         UnitOfMeasure uom2 = new UnitOfMeasure();
-        uom1.setDescription("Tablespoon");
+        uom2.setDescription("Tablespoon");
         unitOfMeasureRepository.save(uom2);
 
 
         UnitOfMeasure uom3 = new UnitOfMeasure();
-        uom1.setDescription("Cup");
+        uom3.setDescription("Cup");
         unitOfMeasureRepository.save(uom3);
 
         UnitOfMeasure uom4 = new UnitOfMeasure();
-        uom1.setDescription("Pinch");
+        uom4.setDescription("Pinch");
         unitOfMeasureRepository.save(uom4);
 
         UnitOfMeasure uom5 = new UnitOfMeasure();
-        uom1.setDescription("Ounce");
+        uom5.setDescription("Ounce");
         unitOfMeasureRepository.save(uom5);
 
         UnitOfMeasure uom6 = new UnitOfMeasure();
-        uom1.setDescription("Each");
+        uom6.setDescription("Each");
         unitOfMeasureRepository.save(uom6);
 
         UnitOfMeasure uom7 = new UnitOfMeasure();
-        uom1.setDescription("Pint");
+        uom7.setDescription("Pint");
         unitOfMeasureRepository.save(uom7);
 
         UnitOfMeasure uom8 = new UnitOfMeasure();
-        uom1.setDescription("Dash");
+        uom8.setDescription("Dash");
         unitOfMeasureRepository.save(uom8);
 
 
